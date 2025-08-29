@@ -24,7 +24,7 @@ export interface RecommendationResult {
   score: number;
   matchingPreferences: string[];
   matchingFeatures: string[];
-  originalIndex?: number;
+  originalIndex: number;
 }
 
 export interface FormErrors {

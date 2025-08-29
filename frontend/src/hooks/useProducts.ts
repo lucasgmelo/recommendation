@@ -25,10 +25,12 @@ export const useProducts = (): UseProductsReturn => {
     const preferencesSet = new Set<string>();
     const featuresSet = new Set<string>();
 
-    products.forEach((product) => {
-      product.preferences.forEach((pref) => preferencesSet.add(pref));
-      product.features.forEach((feat) => featuresSet.add(feat));
-    });
+    if (Array.isArray(products)) {
+      products.forEach((product) => {
+        product.preferences.forEach((pref) => preferencesSet.add(pref));
+        product.features.forEach((feat) => featuresSet.add(feat));
+      });
+    }
 
     return {
       preferences: Array.from(preferencesSet),
