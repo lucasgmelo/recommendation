@@ -1,36 +1,80 @@
 # Recomendador de Produtos
 
-Monorepo contendo a aplicação completa de recomendação de produtos.
+Monorepo contendo a aplicação completa de recomendação de produtos
+Para documentação técnica completa do frontend, consulte o [README do frontend](./frontend/README.md).
 
-## 📁 Estrutura
+## Estrutura
 
-- **`frontend/`** - Aplicação React com interface do usuário ([ver documentação completa](./frontend/README.md))
-- **`backend/`** - API mock para simulação de dados
+```
+recommendation/
+├── frontend/          # Aplicação React + TypeScript
+├── backend/           # API Mock (json-server)
+└── package.json       # Configuração do monorepo
+```
 
-## 🚀 Início Rápido
+## Tecnologias
+
+### Frontend
+
+- **React 18** + **TypeScript**
+- **Vite** - Build tool
+- **Tailwind CSS** - Styling
+- **React Query** - Server state
+- **React Hook Form** - Form management
+- **Vitest** - Testing (92.67% coverage)
+
+### Backend
+
+- **json-server** - REST API mock
+
+### Monorepo
+
+- **Lerna** + **npm workspaces** - Monorepo management
+- **concurrently** - Parallel execution
+
+## Início Rápido
+
+### Pré-requisitos
+
+- Node.js >= 18.3.0
+- npm >= 9.0.0
+
+### Instalação
 
 ```bash
 # Clone o repositório
 git clone <repository-url>
-cd monorepo
+cd recommendation
 
-# Instale dependências em todos os projetos
+# Instale as dependências
 ./install.sh
+```
 
-# Execute frontend e backend simultaneamente
+### Executar
+
+```bash
+# Iniciar frontend e backend
 npm run dev
 ```
 
-A aplicação estará disponível em `http://localhost:3000`
+Aplicação disponível em `http://localhost:3000`
 
-## 📋 Scripts Disponíveis
+## Scripts Disponíveis
 
-- `npm run dev` - Executa frontend e backend em paralelo
-- `npm run start:frontend` - Apenas frontend
-- `npm run start:backend` - Apenas backend
+```bash
+# Desenvolvimento
+npm run dev              # Inicia frontend e backend
+npm run dev:frontend     # Apenas frontend
+npm run dev:backend      # Apenas backend
 
-## 💡 Sobre o Projeto
+# Testes
+npm run test:frontend    # Executa testes
+npm run test:coverage    # Testes com cobertura
 
-Sistema inteligente de recomendação que analisa preferências e funcionalidades desejadas pelo usuário para sugerir os produtos mais adequados da RD Station.
+# Build
+npm run build:frontend   # Build de produção
 
-Para informações técnicas detalhadas, documentação completa e instruções de desenvolvimento, consulte o [README do frontend](./frontend/README.md).
+# Qualidade
+npm run lint:frontend    # ESLint
+npm run lint:fix         # Corrige automaticamente
+```

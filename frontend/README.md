@@ -209,15 +209,3 @@ Exibe os produtos recomendados com detalhes.
 3. Seleciona tipo de recomendação (único/múltiplo)
 4. Sistema processa e calcula recomendações
 5. Exibe produtos sugeridos
-
-## 🚀 Deploy
-
-Para fazer deploy:
-
-```bash
-# Build de produção
-npm run build
-
-# Os arquivos estarão em /dist
-# Configure seu servidor para servir estes arquivos
-```
