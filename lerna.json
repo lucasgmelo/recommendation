@@ -1,9 +1,13 @@
 {
-  "packages": [
-    "frontend",
-    "backend"
-  ],
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
-  "version": "0.0.0",
-  "npmClient": "yarn"
+  "version": "independent",
+  "npmClient": "npm",
+  "command": {
+    "run": {
+      "stream": true
+    },
+    "version": {
+      "message": "chore(release): publish %s"
+    }
+  }
 }
