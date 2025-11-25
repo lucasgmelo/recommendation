@@ -14,11 +14,26 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
     <button
       type="submit"
       disabled={disabled}
-      className={`w-full py-3 px-4 rounded-md font-medium transition-colors ${
+      className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
         disabled
-          ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-          : 'bg-blue-600 hover:bg-blue-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+          ? 'cursor-not-allowed opacity-50'
+          : 'shadow-md hover:shadow-lg transform hover:-translate-y-0.5'
       }`}
+      style={{
+        backgroundColor: disabled ? 'var(--neutral-surface-high-emphasis)' : 'var(--primary-surface-high-emphasis)',
+        color: 'var(--neutral-text-inverse)',
+        border: 'none',
+      }}
+      onMouseEnter={(e) => {
+        if (!disabled) {
+          e.currentTarget.style.backgroundColor = 'var(--primary-surface-hover)';
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (!disabled) {
+          e.currentTarget.style.backgroundColor = 'var(--primary-surface-high-emphasis)';
+        }
+      }}
       {...props}
     >
       {text}

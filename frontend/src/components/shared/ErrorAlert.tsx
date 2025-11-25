@@ -14,28 +14,28 @@ const alertStyles: Record<
   { container: string; icon: string; title: string; message: string }
 > = {
   error: {
-    container: 'bg-red-50 border-red-200',
-    icon: 'text-red-600',
-    title: 'text-red-900',
-    message: 'text-red-700',
+    container: 'border',
+    icon: 'text-xl',
+    title: 'font-semibold',
+    message: 'text-sm',
   },
   warning: {
-    container: 'bg-yellow-50 border-yellow-200',
-    icon: 'text-yellow-600',
-    title: 'text-yellow-900',
-    message: 'text-yellow-700',
+    container: 'border',
+    icon: 'text-xl',
+    title: 'font-semibold',
+    message: 'text-sm',
   },
   info: {
-    container: 'bg-blue-50 border-blue-200',
-    icon: 'text-blue-600',
-    title: 'text-blue-900',
-    message: 'text-blue-700',
+    container: 'border',
+    icon: 'text-xl',
+    title: 'font-semibold',
+    message: 'text-sm',
   },
   success: {
-    container: 'bg-green-50 border-green-200',
-    icon: 'text-green-600',
-    title: 'text-green-900',
-    message: 'text-green-700',
+    container: 'border',
+    icon: 'text-xl',
+    title: 'font-semibold',
+    message: 'text-sm',
   },
 };
 
@@ -57,26 +57,69 @@ const ErrorAlert = ({
   const styles = alertStyles[type];
   const icon = icons[type];
 
+  const getColors = () => {
+    switch (type) {
+      case 'error':
+        return {
+          bg: 'var(--danger-surface-low-emphasis)',
+          border: 'var(--danger-border)',
+          icon: 'var(--danger-icon)',
+          title: 'var(--danger-text)',
+          message: 'var(--danger-text)',
+        };
+      case 'warning':
+        return {
+          bg: 'var(--warning-surface-low-emphasis)',
+          border: 'var(--warning-border)',
+          icon: 'var(--warning-icon)',
+          title: 'var(--warning-text)',
+          message: 'var(--warning-text)',
+        };
+      case 'info':
+        return {
+          bg: 'var(--primary-surface-low-emphasis)',
+          border: 'var(--primary-border)',
+          icon: 'var(--primary-icon)',
+          title: 'var(--primary-text)',
+          message: 'var(--primary-text)',
+        };
+      case 'success':
+        return {
+          bg: 'var(--success-surface-low-emphasis)',
+          border: 'var(--success-border)',
+          icon: 'var(--success-icon)',
+          title: 'var(--success-text)',
+          message: 'var(--success-text)',
+        };
+    }
+  };
+
+  const colors = getColors();
+
   return (
     <div
-      className={`border rounded-md p-4 ${styles.container}`}
+      className={`rounded-lg p-4 ${styles.container}`}
+      style={{
+        backgroundColor: colors.bg,
+        borderColor: colors.border,
+      }}
       role="alert"
       aria-live="polite"
       data-testid={testId}
     >
       <div className="flex">
         <div className="flex-shrink-0">
-          <span className={`text-xl ${styles.icon}`} aria-hidden="true">
+          <span className={styles.icon} style={{ color: colors.icon }} aria-hidden="true">
             {icon}
           </span>
         </div>
         <div className="ml-3 flex-1">
           {title && (
-            <h3 className={`text-sm font-medium ${styles.title} mb-1`}>
+            <h3 className={`${styles.title} mb-1`} style={{ color: colors.title }}>
               {title}
             </h3>
           )}
-          <p className={`text-sm ${styles.message}`}>{message}</p>
+          <p className={styles.message} style={{ color: colors.message }}>{message}</p>
 
           {(onRetry || onDismiss) && (
             <div className="mt-3 flex gap-2">
@@ -84,7 +127,8 @@ const ErrorAlert = ({
                 <button
                   type="button"
                   onClick={onRetry}
-                  className="text-sm font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:underline transition-colors"
+                  className="text-sm font-medium hover:underline focus:outline-none focus:underline transition-colors"
+                  style={{ color: 'var(--primary-text)' }}
                   data-testid="retry-button"
                 >
                   Tentar novamente
@@ -94,7 +138,8 @@ const ErrorAlert = ({
                 <button
                   type="button"
                   onClick={onDismiss}
-                  className="text-sm font-medium text-gray-600 hover:text-gray-500 focus:outline-none focus:underline transition-colors"
+                  className="text-sm font-medium hover:underline focus:outline-none focus:underline transition-colors"
+                  style={{ color: 'var(--neutral-text-low-emphasis)' }}
                   data-testid="dismiss-button"
                 >
                   Dispensar

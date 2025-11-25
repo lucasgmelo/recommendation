@@ -106,8 +106,11 @@ const Form: React.FC<FormProps> = ({ onRecommendationsChange }) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center p-8" role="status">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-        <span className="ml-2 text-gray-600">Carregando produtos...</span>
+        <div 
+          className="animate-spin rounded-full h-8 w-8 border-b-2"
+          style={{ borderColor: 'var(--primary-border)' }}
+        ></div>
+        <span className="ml-2" style={{ color: 'var(--neutral-text-low-emphasis)' }}>Carregando produtos...</span>
       </div>
     );
   }
@@ -135,7 +138,7 @@ const Form: React.FC<FormProps> = ({ onRecommendationsChange }) => {
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <fieldset className="space-y-6">
-            <legend className="text-xl font-semibold text-gray-900 mb-4">
+            <legend className="text-xl font-semibold mb-4" style={{ color: 'var(--neutral-text-high-emphasis)' }}>
               Configure suas preferências
             </legend>
 

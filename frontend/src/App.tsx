@@ -20,36 +20,54 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <div className="bg-gray-100 min-h-screen flex flex-col justify-center items-center px-4">
-        <header className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
-            Recomendador de Produtos RD Station
-          </h1>
+      <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'var(--neutral-surface-low-emphasis)' }}>
+        <header className="py-16 px-4 relative overflow-hidden" style={{ 
+          backgroundColor: 'var(--neutral-surface)',
+          borderBottom: '1px solid var(--neutral-border)',
+          borderTop: '6px solid var(--primary-surface-high-emphasis)'
+        }}>
+          <div className="max-w-7xl mx-auto relative z-10" style={{ 
+            paddingLeft: 'var(--grid-margin)', 
+            paddingRight: 'var(--grid-margin)' 
+          }}>
+            <div className="max-w-3xl">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--neutral-text-high-emphasis)' }}>
+                Encontre o produto ideal para o seu negócio
+              </h1>
+              <p className="text-xl leading-relaxed" style={{ color: 'var(--neutral-text-low-emphasis)' }}>
+                De CRM a Marketing, de Conversas a Inteligência Artificial. 
+                Descubra como a RD Station pode ajudar você a alcançar seus objetivos.
+              </p>
+            </div>
+          </div>
+          <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none" 
+               style={{ 
+                 background: 'radial-gradient(circle at center, var(--primary-surface-high-emphasis) 0%, transparent 70%)',
+                 transform: 'translate(30%, -30%)'
+               }} 
+          />
         </header>
 
-        <main className="bg-white p-8 rounded-lg shadow-md w-full max-w-6xl">
-          <section className="mb-8">
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Bem-vindo ao Recomendador de Produtos RD Station. Aqui você pode
-              encontrar uma variedade de produtos da RD Station, cada um
-              projetado para atender às necessidades específicas do seu
-              negócio. De CRM a Marketing, de Conversas a Inteligência
-              Artificial, temos uma solução para ajudar você a alcançar seus
-              objetivos. Use o formulário abaixo para selecionar suas
-              preferências e funcionalidades desejadas e receba recomendações
-              personalizadas de produtos que melhor atendam às suas
-              necessidades.
-            </p>
-          </section>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <section aria-labelledby="form-section">
-              <Form onRecommendationsChange={handleRecommendationsChange} />
-            </section>
-
-            <section aria-labelledby="recommendations-section">
-              <RecommendationList recommendations={recommendations} />
-            </section>
+        <main className="flex-grow w-full max-w-7xl mx-auto py-12" style={{ 
+          paddingLeft: 'var(--grid-margin)', 
+          paddingRight: 'var(--grid-margin)' 
+        }}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8" style={{ gap: 'var(--grid-gutter)' }}>
+            <div className="lg:col-span-4 xl:col-span-3">
+              <div className="sticky top-8 rounded-2xl p-6 shadow-sm" style={{ 
+                backgroundColor: 'var(--neutral-surface)',
+                border: '1px solid var(--neutral-border)'
+              }}>
+                <section aria-labelledby="form-section">
+                  <Form onRecommendationsChange={handleRecommendationsChange} />
+                </section>
+              </div>
+            </div>
+            <div className="lg:col-span-8 xl:col-span-9">
+              <section aria-labelledby="recommendations-section">
+                <RecommendationList recommendations={recommendations} />
+              </section>
+            </div>
           </div>
         </main>
       </div>
