@@ -9,7 +9,7 @@ import { ErrorType } from '../../types/errors';
 import ErrorAlert from '../shared/ErrorAlert';
 
 interface FormProps {
-  onRecommendationsChange?: (recommendations: Product | Product[]) => void;
+  onRecommendationsChange?: (recommendations: Product[]) => void;
 }
 
 const Form: React.FC<FormProps> = ({ onRecommendationsChange }) => {
@@ -107,10 +107,9 @@ const Form: React.FC<FormProps> = ({ onRecommendationsChange }) => {
     return (
       <div className="flex justify-center items-center p-8" role="status">
         <div 
-          className="animate-spin rounded-full h-8 w-8 border-b-2"
-          style={{ borderColor: 'var(--primary-border)' }}
+          className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--primary-border)]"
         ></div>
-        <span className="ml-2" style={{ color: 'var(--neutral-text-low-emphasis)' }}>Carregando produtos...</span>
+        <span className="ml-2 text-[var(--neutral-text-low-emphasis)]">Carregando produtos...</span>
       </div>
     );
   }
@@ -138,7 +137,7 @@ const Form: React.FC<FormProps> = ({ onRecommendationsChange }) => {
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <fieldset className="space-y-6">
-            <legend className="text-xl font-semibold mb-4" style={{ color: 'var(--neutral-text-high-emphasis)' }}>
+            <legend className="text-xl font-semibold mb-4 text-[var(--neutral-text-high-emphasis)]">
               Configure suas preferências
             </legend>
 

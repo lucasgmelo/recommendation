@@ -38,7 +38,7 @@ describe('App', () => {
     renderWithClient(<App />);
 
     expect(
-      screen.getByText('Recomendador de Produtos RD Station')
+      screen.getByText('Encontre o produto ideal para o seu negócio')
     ).toBeInTheDocument();
   });
 
@@ -53,7 +53,7 @@ describe('App', () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText(/Bem-vindo ao Recomendador de Produtos RD Station/i)
+        screen.getByText(/De CRM a Marketing/i)
       ).toBeInTheDocument();
     });
   });
@@ -88,7 +88,7 @@ describe('App', () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText('Recomendador de Produtos RD Station')
+        screen.getByText('Encontre o produto ideal para o seu negócio')
       ).toBeInTheDocument();
     });
   });

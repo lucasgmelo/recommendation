@@ -12,31 +12,15 @@ interface RecommendationItemProps {
 const RecommendationItem = memo<RecommendationItemProps>(
   ({ recommendation }) => (
     <article
-      className="rounded-xl p-5 transition-all duration-200 hover:shadow-lg"
+      className="rounded-xl p-5 transition-all duration-200 hover:shadow-lg border border-[var(--neutral-border)] bg-[var(--neutral-surface)] hover:border-[var(--primary-border)] hover:bg-[var(--neutral-surface-low-emphasis)]"
       data-testid="recommendation-item"
-      style={{
-        border: '1px solid var(--neutral-border)',
-        backgroundColor: 'var(--neutral-surface)',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = 'var(--primary-border)';
-        e.currentTarget.style.backgroundColor = 'var(--neutral-surface-low-emphasis)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = 'var(--neutral-border)';
-        e.currentTarget.style.backgroundColor = 'var(--neutral-surface)';
-      }}
     >
-      <h3 className="font-semibold text-lg mb-2" style={{ color: 'var(--neutral-text-high-emphasis)' }}>
+      <h3 className="font-semibold text-lg mb-2 text-[var(--neutral-text-high-emphasis)]">
         {recommendation.name}
       </h3>
       {recommendation.category && (
         <span 
-          className="inline-block text-xs font-medium px-3 py-1 rounded-full mb-3"
-          style={{
-            backgroundColor: 'var(--primary-surface-low-emphasis)',
-            color: 'var(--primary-text)',
-          }}
+          className="inline-block text-xs font-medium px-3 py-1 rounded-full mb-3 bg-[var(--primary-surface-low-emphasis)] text-[var(--primary-text)]"
         >
           {recommendation.category}
         </span>
@@ -44,18 +28,14 @@ const RecommendationItem = memo<RecommendationItemProps>(
 
       {recommendation.preferences && recommendation.preferences.length > 0 && (
         <div className="mb-3">
-          <h4 className="text-sm font-medium mb-2" style={{ color: 'var(--neutral-text-high-emphasis)' }}>
+          <h4 className="text-sm font-medium mb-2 text-[var(--neutral-text-high-emphasis)]">
             Preferências atendidas:
           </h4>
           <div className="flex flex-wrap gap-2">
             {recommendation.preferences.map((pref, idx) => (
               <span
                 key={idx}
-                className="inline-block text-xs px-2.5 py-1 rounded-md"
-                style={{
-                  backgroundColor: 'var(--success-surface-low-emphasis)',
-                  color: 'var(--success-text)',
-                }}
+                className="inline-block text-xs px-2.5 py-1 rounded-md bg-[var(--success-surface-low-emphasis)] text-[var(--success-text)]"
               >
                 {pref}
               </span>
@@ -66,18 +46,14 @@ const RecommendationItem = memo<RecommendationItemProps>(
 
       {recommendation.features && recommendation.features.length > 0 && (
         <div>
-          <h4 className="text-sm font-medium mb-2" style={{ color: 'var(--neutral-text-high-emphasis)' }}>
+          <h4 className="text-sm font-medium mb-2 text-[var(--neutral-text-high-emphasis)]">
             Funcionalidades:
           </h4>
           <div className="flex flex-wrap gap-2">
             {recommendation.features.map((feat, idx) => (
               <span
                 key={idx}
-                className="inline-block text-xs px-2.5 py-1 rounded-md"
-                style={{
-                  backgroundColor: 'var(--highlight-surface-low-emphasis)',
-                  color: 'var(--highlight-text)',
-                }}
+                className="inline-block text-xs px-2.5 py-1 rounded-md bg-[var(--highlight-surface-low-emphasis)] text-[var(--highlight-text)]"
               >
                 {feat}
               </span>
@@ -98,8 +74,8 @@ const EmptyState = () => (
       alt="Nenhuma recomendação encontrada" 
       className="w-48 h-auto mb-6 opacity-80"
     />
-    <p className="text-lg font-medium" style={{ color: 'var(--neutral-text-low-emphasis)' }}>Nenhuma recomendação encontrada.</p>
-    <p className="text-sm mt-2 max-w-xs mx-auto" style={{ color: 'var(--neutral-text-disabled)' }}>
+    <p className="text-lg font-medium text-[var(--neutral-text-low-emphasis)]">Nenhuma recomendação encontrada.</p>
+    <p className="text-sm mt-2 max-w-xs mx-auto text-[var(--neutral-text-disabled)]">
       Configure suas preferências no formulário para receber sugestões
       personalizadas.
     </p>
@@ -111,8 +87,7 @@ const RecommendationList = ({ recommendations }: RecommendationListProps) => {
     <section aria-labelledby="recommendations-heading">
       <h2
         id="recommendations-heading"
-        className="text-xl font-semibold mb-4"
-        style={{ color: 'var(--neutral-text-high-emphasis)' }}
+        className="text-xl font-semibold mb-4 text-[var(--neutral-text-high-emphasis)]"
       >
         Recomendações de Produtos
       </h2>

@@ -3,7 +3,7 @@ import { Product, RecommendationInput, RecommendationResult } from '../types';
 export const getRecommendations = (
   formData: RecommendationInput,
   products: Product[]
-): Product | Product[] => {
+): Product[] => {
   const { preferences, features, type } = formData;
   const preferencesSet = new Set(preferences);
   const featuresSet = new Set(features);
@@ -33,15 +33,13 @@ export const getRecommendations = (
     .filter((result) => result.score > 0)
     .sort((a, b) => {
       if (a.score === b.score) {
-        return a.originalIndex - b.originalIndex;
+        return b.originalIndex - a.originalIndex;
       }
       return b.score - a.score;
     });
 
   if (type === 'single') {
-    return validProducts.length > 0
-      ? validProducts[validProducts.length - 1].product
-      : products[0];
+    return validProducts.length > 0 ? [validProducts[0].product] : [products[0]];
   } else {
     return validProducts.map((result) => result.product);
   }

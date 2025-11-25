@@ -16,7 +16,7 @@ const mockedAxios = axios as any;
 describe('Product Service', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    console.warn = vi.fn(); // Mock console.warn to avoid noise in tests
+    console.warn = vi.fn();
   });
 
   it('returns products from API when request is successful', async () => {

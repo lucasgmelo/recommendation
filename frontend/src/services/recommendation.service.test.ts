@@ -12,8 +12,9 @@ describe('recommendationService', () => {
 
     const recommendation = getRecommendations(formData, mockProducts);
 
-    expect(Array.isArray(recommendation)).toBe(false);
-    expect((recommendation as any).name).toBe('RD Conversas');
+    expect(Array.isArray(recommendation)).toBe(true);
+    expect(recommendation).toHaveLength(1);
+    expect(recommendation[0].name).toBe('RD Conversas');
   });
 
   test('Retorna recomendações corretas para multiple com base nas preferências selecionadas', () => {
@@ -30,7 +31,7 @@ describe('recommendationService', () => {
       type: 'multiple',
     };
 
-    const recommendations = getRecommendations(formData, mockProducts) as any[];
+    const recommendations = getRecommendations(formData, mockProducts);
 
     expect(Array.isArray(recommendations)).toBe(true);
     expect(recommendations).toHaveLength(2);
@@ -55,8 +56,9 @@ describe('recommendationService', () => {
 
     const recommendation = getRecommendations(formData, mockProducts);
 
-    expect(Array.isArray(recommendation)).toBe(false);
-    expect((recommendation as any).name).toBe('RD Station Marketing');
+    expect(Array.isArray(recommendation)).toBe(true);
+    expect(recommendation).toHaveLength(1);
+    expect(recommendation[0].name).toBe('RD Station Marketing');
   });
 
   test('Retorna o último match em caso de empate para single', () => {
@@ -68,7 +70,22 @@ describe('recommendationService', () => {
 
     const recommendation = getRecommendations(formData, mockProducts);
 
-    expect(Array.isArray(recommendation)).toBe(false);
-    expect((recommendation as any).name).toBe('RD Conversas');
+    expect(Array.isArray(recommendation)).toBe(true);
+    expect(recommendation).toHaveLength(1);
+    expect(recommendation[0].name).toBe('RD Conversas');
+  });
+
+  test('Retorna o produto com maior score quando há diferença de pontuação', () => {
+    const formData: RecommendationInput = {
+      preferences: ['Integração fácil com ferramentas de e-mail'],
+      features: ['Gestão de leads e oportunidades'],
+      type: 'single',
+    };
+
+    const recommendation = getRecommendations(formData, mockProducts);
+
+    expect(Array.isArray(recommendation)).toBe(true);
+    expect(recommendation).toHaveLength(1);
+    expect(recommendation[0].name).toBe('RD Station CRM');
   });
 });

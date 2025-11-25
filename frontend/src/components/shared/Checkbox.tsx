@@ -13,31 +13,12 @@ const Checkbox: React.FC<CheckboxProps> = ({ children, id, ...props }) => {
         <input
           id={id}
           type="checkbox"
-          className="peer appearance-none w-5 h-5 border rounded transition-all duration-200 cursor-pointer"
-          style={{
-            borderColor: 'var(--neutral-border-interactive)',
-            backgroundColor: 'var(--neutral-surface)',
-          }}
+          className="peer appearance-none w-5 h-5 border rounded transition-all duration-200 cursor-pointer border-[var(--neutral-border-interactive)] bg-[var(--neutral-surface)] checked:bg-[var(--primary-surface-high-emphasis)] checked:border-[var(--primary-border)] hover:border-[var(--neutral-border-interactive-hover)]"
           {...props}
         />
 
-        <style>{`
-          #${id}:checked {
-            background-color: var(--primary-surface-high-emphasis) !important;
-            border-color: var(--primary-border) !important;
-          }
-          #${id}:hover:not(:checked) {
-            border-color: var(--neutral-border-interactive-hover) !important;
-          }
-        `}</style>
         <svg
-          className="absolute w-3.5 h-3.5 pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity duration-200"
-          style={{ 
-            left: '50%', 
-            top: '50%', 
-            transform: 'translate(-50%, -50%)',
-            color: '#000000'
-          }}
+          className="absolute w-3.5 h-3.5 pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity duration-200 text-black translate-x-[-50%] translate-y-[-50%] left-1/2 top-1/2"
           viewBox="0 0 14 14"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +32,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ children, id, ...props }) => {
           />
         </svg>
       </div>
-      <span className="ml-3 text-sm font-medium transition-colors" style={{ color: 'var(--neutral-text-high-emphasis)' }}>
+      <span className="ml-3 text-sm font-medium transition-colors text-[var(--neutral-text-high-emphasis)]">
         {children}
       </span>
     </label>

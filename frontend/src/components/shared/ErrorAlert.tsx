@@ -11,31 +11,35 @@ export interface ErrorAlertProps {
 
 const alertStyles: Record<
   AlertType,
-  { container: string; icon: string; title: string; message: string }
+  { container: string; icon: string; title: string; message: string; button: string }
 > = {
   error: {
-    container: 'border',
-    icon: 'text-xl',
-    title: 'font-semibold',
-    message: 'text-sm',
+    container: 'bg-red-50 border-red-200',
+    icon: 'text-red-400',
+    title: 'text-red-800',
+    message: 'text-red-700',
+    button: 'text-red-800 hover:text-red-900',
   },
   warning: {
-    container: 'border',
-    icon: 'text-xl',
-    title: 'font-semibold',
-    message: 'text-sm',
+    container: 'bg-yellow-50 border-yellow-200',
+    icon: 'text-yellow-400',
+    title: 'text-yellow-800',
+    message: 'text-yellow-700',
+    button: 'text-yellow-800 hover:text-yellow-900',
   },
   info: {
-    container: 'border',
-    icon: 'text-xl',
-    title: 'font-semibold',
-    message: 'text-sm',
+    container: 'bg-blue-50 border-blue-200',
+    icon: 'text-blue-400',
+    title: 'text-blue-800',
+    message: 'text-blue-700',
+    button: 'text-blue-800 hover:text-blue-900',
   },
   success: {
-    container: 'border',
-    icon: 'text-xl',
-    title: 'font-semibold',
-    message: 'text-sm',
+    container: 'bg-green-50 border-green-200',
+    icon: 'text-green-400',
+    title: 'text-green-800',
+    message: 'text-green-700',
+    button: 'text-green-800 hover:text-green-900',
   },
 };
 
@@ -57,69 +61,26 @@ const ErrorAlert = ({
   const styles = alertStyles[type];
   const icon = icons[type];
 
-  const getColors = () => {
-    switch (type) {
-      case 'error':
-        return {
-          bg: 'var(--danger-surface-low-emphasis)',
-          border: 'var(--danger-border)',
-          icon: 'var(--danger-icon)',
-          title: 'var(--danger-text)',
-          message: 'var(--danger-text)',
-        };
-      case 'warning':
-        return {
-          bg: 'var(--warning-surface-low-emphasis)',
-          border: 'var(--warning-border)',
-          icon: 'var(--warning-icon)',
-          title: 'var(--warning-text)',
-          message: 'var(--warning-text)',
-        };
-      case 'info':
-        return {
-          bg: 'var(--primary-surface-low-emphasis)',
-          border: 'var(--primary-border)',
-          icon: 'var(--primary-icon)',
-          title: 'var(--primary-text)',
-          message: 'var(--primary-text)',
-        };
-      case 'success':
-        return {
-          bg: 'var(--success-surface-low-emphasis)',
-          border: 'var(--success-border)',
-          icon: 'var(--success-icon)',
-          title: 'var(--success-text)',
-          message: 'var(--success-text)',
-        };
-    }
-  };
-
-  const colors = getColors();
-
   return (
     <div
-      className={`rounded-lg p-4 ${styles.container}`}
-      style={{
-        backgroundColor: colors.bg,
-        borderColor: colors.border,
-      }}
+      className={`rounded-lg p-4 border ${styles.container}`}
       role="alert"
       aria-live="polite"
       data-testid={testId}
     >
       <div className="flex">
         <div className="flex-shrink-0">
-          <span className={styles.icon} style={{ color: colors.icon }} aria-hidden="true">
+          <span className={`text-xl ${styles.icon}`} aria-hidden="true">
             {icon}
           </span>
         </div>
         <div className="ml-3 flex-1">
           {title && (
-            <h3 className={`${styles.title} mb-1`} style={{ color: colors.title }}>
+            <h3 className={`text-sm font-medium mb-1 ${styles.title}`}>
               {title}
             </h3>
           )}
-          <p className={styles.message} style={{ color: colors.message }}>{message}</p>
+          <p className={`text-sm ${styles.message}`}>{message}</p>
 
           {(onRetry || onDismiss) && (
             <div className="mt-3 flex gap-2">
@@ -127,8 +88,7 @@ const ErrorAlert = ({
                 <button
                   type="button"
                   onClick={onRetry}
-                  className="text-sm font-medium hover:underline focus:outline-none focus:underline transition-colors"
-                  style={{ color: 'var(--primary-text)' }}
+                  className={`text-sm font-medium hover:underline focus:outline-none focus:underline transition-colors ${styles.button}`}
                   data-testid="retry-button"
                 >
                   Tentar novamente
@@ -138,8 +98,7 @@ const ErrorAlert = ({
                 <button
                   type="button"
                   onClick={onDismiss}
-                  className="text-sm font-medium hover:underline focus:outline-none focus:underline transition-colors"
-                  style={{ color: 'var(--neutral-text-low-emphasis)' }}
+                  className={`text-sm font-medium hover:underline focus:outline-none focus:underline transition-colors ${styles.button}`}
                   data-testid="dismiss-button"
                 >
                   Dispensar

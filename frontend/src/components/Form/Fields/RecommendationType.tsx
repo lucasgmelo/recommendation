@@ -25,35 +25,15 @@ const RecommendationType: React.FC<RecommendationTypeProps> = ({
                 value={type}
                 checked={selectedType === type}
                 onChange={() => onRecommendationTypeChange(type as 'single' | 'multiple')}
-                className="peer appearance-none w-5 h-5 border rounded-full transition-all duration-200 cursor-pointer"
-                style={{
-                  borderColor: 'var(--neutral-border-interactive)',
-                  backgroundColor: 'var(--neutral-surface)',
-                }}
+                className="peer appearance-none w-5 h-5 border rounded-full transition-all duration-200 cursor-pointer border-[var(--neutral-border-interactive)] bg-[var(--neutral-surface)] checked:bg-[var(--primary-surface-high-emphasis)] checked:border-[var(--primary-border)] hover:border-[var(--neutral-border-interactive-hover)]"
               />
-              <style>{`
-                #${type}-product:checked {
-                  background-color: var(--primary-surface-high-emphasis) !important;
-                  border-color: var(--primary-border) !important;
-                }
-                #${type}-product:hover:not(:checked) {
-                  border-color: var(--neutral-border-interactive-hover) !important;
-                }
-              `}</style>
               <div 
-                className="absolute w-2 h-2 rounded-full pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity duration-200"
-                style={{ 
-                  left: '50%', 
-                  top: '50%', 
-                  transform: 'translate(-50%, -50%)',
-                  backgroundColor: '#000000'
-                }}
+                className="absolute w-2 h-2 rounded-full pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity duration-200 bg-black translate-x-[-50%] translate-y-[-50%] left-1/2 top-1/2"
               />
             </div>
             <label
               htmlFor={`${type}-product`}
-              className="ml-3 text-sm font-medium cursor-pointer transition-colors"
-              style={{ color: 'var(--neutral-text-high-emphasis)' }}
+              className="ml-3 text-sm font-medium cursor-pointer transition-colors text-[var(--neutral-text-high-emphasis)]"
             >
               {type === 'single' ? 'Produto Único' : 'Múltiplos Produtos'}
             </label>
