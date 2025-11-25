@@ -1,5 +1,8 @@
 # Recomendador de Produtos
 
+![demo](https://github.com/user-attachments/assets/a53768e1-0f78-4cc1-b051-420d5f09c07b)
+
+
 Monorepo contendo a aplicação completa de recomendação de produtos
 Para documentação técnica completa do frontend, consulte o [README do frontend](./frontend/README.md).
 
